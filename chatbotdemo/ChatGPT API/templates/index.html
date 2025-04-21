@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Food Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS for layout and styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome for optional icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- Highlight.js for optional code formatting support -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+  <!-- Your custom stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-color: #1e1e2f; color: white;">
+
+  <div class="container mt-5">
+    <h1 class="text-white mb-4">Campus Food Chatbot</h1>
+
+    <!-- Chat display box -->
+    <div class="chat-box p-3 mb-3" style="background:#2a2a3d; border-radius:10px; max-height:500px; overflow-y:auto;">
+      <!-- Messages will be dynamically inserted here -->
+    </div>
+
+    <!-- Input area for user message -->
+    <div class="form-group">
+      <textarea class="form-control" id="message-input" rows="3" placeholder="Type your ingredients or question here..."></textarea>
+    </div>
+    <button class="btn btn-primary" id="send-btn">Send</button>
+  </div>
+
+  <!-- Chatbot frontend logic -->
+  <script>
+    const chatBox = document.querySelector(".chat-box");
+    const messageInput = document.querySelector("#message-input");
+    const sendBtn = document.querySelector("#send-btn");
+
+    // Adds a message (user or bot) to the chat box
+    function addMessage(message, isUser) {
+      const div = document.createElement("div");
+      div.classList.add("mt-3", "p-3", "rounded", isUser ? "user-message" : "bot-message");
+
+      const icon = isUser
+        ? "{{ url_for('static', filename='images/user.png') }}"
+        : "{{ url_for('static', filename='images/gpt.jpg') }}";
+
+      div.innerHTML = `
+        <img src="${icon}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
+        <p>${message}</p>
+      `;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+    }
+
+    // Sends the user message to the Flask API and handles the response
+    function sendMessage() {
+      const message = messageInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, true); // Show user message
+      messageInput.value = "";   // Clear input box
+
+      // Send POST request to Flask API
+      fetch("/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const div = document.createElement("div");
+        div.classList.add("mt-3", "p-3", "rounded", "bot-message");
+
+        // Insert bot reply, image, and audio
+        div.innerHTML = `
+          <img src="{{ url_for('static', filename='images/gpt.jpg') }}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
+          <p>${data.text}</p>
+          <img src="${data.image_url}" alt="Recipe Image" style="max-width:100%; border-radius:12px; margin-top:10px;" />
+          <audio controls style="margin-top:10px;">
+            <source src="data:audio/mp3;base64,${data.audio_base64}" type="audio/mp3">
+          </audio>
+        `;
+
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("There was an error processing your request.");
+      });
+    }
+
+    // Event listeners for button click and Enter key
+    sendBtn.addEventListener("click", sendMessage);
+    messageInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Optional: auto-highlight code blocks in responses
+    setInterval(() => {
+      document.querySelectorAll("pre code").forEach(block => {
+        hljs.highlightElement(block);
+      });
+    }, 1000);
+  </script>
+</body>
+</html>
