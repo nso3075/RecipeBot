@@ -4,7 +4,7 @@ import numpy as np
 from openai import OpenAI
 import os
 
-openai_client = OpenAI(api_key=os.getenv("KEY")) # Replace later
+openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load ingredients
 with open("data/ingredients.json") as f:

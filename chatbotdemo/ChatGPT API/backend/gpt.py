@@ -1,7 +1,7 @@
 from openai import OpenAI
 import os
 
-openai_client = OpenAI(api_key=os.getenv("KEY"))  # Replace later
+openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_meal_idea(user_input: str, context: str) -> str:
     messages = [
