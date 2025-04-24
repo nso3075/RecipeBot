@@ -1,5 +1,8 @@
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -11,7 +14,6 @@ def generate_meal_idea(user_input: str, context: str) -> str:
 
     response = openai_client.chat.completions.create(
         model="gpt-4.1",
-        messages=messages,
         messages = messages,
     )
     return response.choices[0].message.content

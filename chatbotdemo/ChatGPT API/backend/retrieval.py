@@ -3,11 +3,13 @@ import faiss
 import numpy as np
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Load ingredients
-with open("data/ingredients.json") as f:
+with open("static/ingredients.json") as f:
     facts = json.load(f)
 
 # Embed text string

@@ -2,6 +2,10 @@ from elevenlabs.client import ElevenLabs
 import os
 import base64
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 voice_client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
 VOICE_ID = os.getenv("VOICE_ID")
 
