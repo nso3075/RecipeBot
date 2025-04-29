@@ -1,0 +1,792 @@
+[
+    {
+        "name": "instant noodles",
+        "summary": "Quick-cook noodles flavored with seasoning packets. A dorm classic for fast, hot meals.",
+        "pairs_well_with": [
+            "eggs",
+            "hot sauce",
+            "cheese",
+            "frozen veggies"
+        ],
+        "substitutes": [
+            "ramen packs",
+            "cup noodles",
+            "mac & cheese"
+        ],
+        "flavor_profile": "Salty, umami, savory",
+        "cooking_tips": "Crack an egg or stir in hot sauce for a richer meal."
+    },
+    {
+        "name": "microwaveable mac & cheese",
+        "summary": "Pre-portioned pasta and cheese meals ready in minutes using a microwave.",
+        "pairs_well_with": [
+            "hot sauce",
+            "chicken nuggets",
+            "breadcrumbs"
+        ],
+        "substitutes": [
+            "boxed mac & cheese",
+            "instant mashed potatoes"
+        ],
+        "flavor_profile": "Creamy, cheesy, salty",
+        "cooking_tips": "Mix in salsa or leftover meats to elevate flavor."
+    },
+    {
+        "name": "chips",
+        "summary": "Crispy, salty snack foods made from potatoes or corn. Great as sides or toppings.",
+        "pairs_well_with": [
+            "salsa",
+            "sandwiches",
+            "mac & cheese"
+        ],
+        "substitutes": [
+            "pretzels",
+            "popcorn",
+            "crackers"
+        ],
+        "flavor_profile": "Salty, crunchy, sometimes spicy",
+        "cooking_tips": "Use crushed as a topping on baked dishes."
+    },
+    {
+        "name": "pretzels",
+        "summary": "Dry, baked bread snacks with a chewy or crispy texture.",
+        "pairs_well_with": [
+            "peanut butter",
+            "hummus",
+            "cheese"
+        ],
+        "substitutes": [
+            "chips",
+            "crackers",
+            "breadsticks"
+        ],
+        "flavor_profile": "Salty, bready, toasty",
+        "cooking_tips": "Great for dipping or as a snack with coffee or soda."
+    },
+    {
+        "name": "popcorn",
+        "summary": "Puffed corn snack often flavored with butter or cheese.",
+        "pairs_well_with": [
+            "hot sauce",
+            "cheese powder",
+            "trail mix"
+        ],
+        "substitutes": [
+            "pretzels",
+            "chips",
+            "crackers"
+        ],
+        "flavor_profile": "Buttery, salty, airy",
+        "cooking_tips": "Add cinnamon sugar or crushed candy for sweet variations."
+    },
+    {
+        "name": "granola bars",
+        "summary": "Compact bars made from oats, nuts, and sweeteners. Good for energy on the go.",
+        "pairs_well_with": [
+            "yogurt",
+            "milk",
+            "fruit"
+        ],
+        "substitutes": [
+            "trail mix",
+            "protein bars",
+            "cereal"
+        ],
+        "flavor_profile": "Sweet, chewy or crunchy",
+        "cooking_tips": "Crumble into yogurt or microwave briefly for a warm treat."
+    },
+    {
+        "name": "trail mix",
+        "summary": "Mix of nuts, dried fruit, chocolate, and seeds. High-energy snack.",
+        "pairs_well_with": [
+            "popcorn",
+            "yogurt",
+            "granola"
+        ],
+        "substitutes": [
+            "granola bars",
+            "mixed nuts"
+        ],
+        "flavor_profile": "Sweet, salty, crunchy",
+        "cooking_tips": "Great topping for oatmeal or cold cereal."
+    },
+    {
+        "name": "crackers",
+        "summary": "Dry, crunchy snacks often served with cheese or dips.",
+        "pairs_well_with": [
+            "cheese",
+            "peanut butter",
+            "tuna"
+        ],
+        "substitutes": [
+            "chips",
+            "pretzels"
+        ],
+        "flavor_profile": "Salty, crispy, bland or cheesy",
+        "cooking_tips": "Stack with deli meat for instant mini sandwiches."
+    },
+    {
+        "name": "cookies",
+        "summary": "Sweet baked snacks often containing chocolate, cream, or spices.",
+        "pairs_well_with": [
+            "milk",
+            "ice cream",
+            "peanut butter"
+        ],
+        "substitutes": [
+            "candy",
+            "granola bars"
+        ],
+        "flavor_profile": "Sweet, soft or crunchy",
+        "cooking_tips": "Crush into ice cream or microwave for a soft dessert."
+    },
+    {
+        "name": "candy",
+        "summary": "Sweet treats made from sugar, chocolate, or gelatin.",
+        "pairs_well_with": [
+            "popcorn",
+            "desserts",
+            "soda"
+        ],
+        "substitutes": [
+            "cookies",
+            "chocolate chips"
+        ],
+        "flavor_profile": "Sweet, fruity, or chocolaty",
+        "cooking_tips": "Use as toppings for popcorn or microwave desserts."
+    },
+    {
+        "name": "beef jerky",
+        "summary": "Dried, seasoned meat snack. High in protein and shelf-stable.",
+        "pairs_well_with": [
+            "cheese",
+            "crackers",
+            "apples"
+        ],
+        "substitutes": [
+            "deli meat",
+            "pepperoni"
+        ],
+        "flavor_profile": "Savory, smoky, salty",
+        "cooking_tips": "Chop into pieces and toss into salads or instant noodles."
+    },
+    {
+        "name": "energy drinks",
+        "summary": "Carbonated drinks with caffeine, vitamins, and sugar for a quick boost.",
+        "pairs_well_with": [
+            "granola bars",
+            "snacks",
+            "late-night cramming"
+        ],
+        "substitutes": [
+            "coffee",
+            "tea"
+        ],
+        "flavor_profile": "Sweet, tangy, artificial",
+        "cooking_tips": "Serve chilled. Don\u2019t mix with alcohol or drink in excess."
+    },
+    {
+        "name": "coffee",
+        "summary": "Brewed beverage from ground coffee beans. A go-to for energy.",
+        "pairs_well_with": [
+            "granola bars",
+            "cookies",
+            "creamers"
+        ],
+        "substitutes": [
+            "tea",
+            "energy drinks"
+        ],
+        "flavor_profile": "Bitter, rich, roasted",
+        "cooking_tips": "Add flavored creamer, cinnamon, or cocoa powder for variety."
+    },
+    {
+        "name": "tea",
+        "summary": "Infused beverage made from leaves, herbs, or fruit blends.",
+        "pairs_well_with": [
+            "honey",
+            "cookies",
+            "lemon"
+        ],
+        "substitutes": [
+            "coffee",
+            "juice"
+        ],
+        "flavor_profile": "Earthy, floral, herbal",
+        "cooking_tips": "Add milk for chai; steep longer for stronger flavor."
+    },
+    {
+        "name": "soft drinks",
+        "summary": "Carbonated sodas in various flavors. Often served cold.",
+        "pairs_well_with": [
+            "pizza",
+            "popcorn",
+            "snack foods"
+        ],
+        "substitutes": [
+            "juice",
+            "flavored water"
+        ],
+        "flavor_profile": "Sweet, fizzy, acidic",
+        "cooking_tips": "Use in floats or as a sweetener in sauces (e.g. cola BBQ)."
+    },
+    {
+        "name": "sports drinks",
+        "summary": "Hydration beverages with electrolytes, sugar, and flavoring.",
+        "pairs_well_with": [
+            "snacks",
+            "energy bars",
+            "water"
+        ],
+        "substitutes": [
+            "flavored water",
+            "juice"
+        ],
+        "flavor_profile": "Fruity, sweet, refreshing",
+        "cooking_tips": "Serve chilled or frozen for a slushy-like treat."
+    },
+    {
+        "name": "juice",
+        "summary": "Fruit-based beverages, often sweet and tangy. Can be fortified with vitamins.",
+        "pairs_well_with": [
+            "breakfast items",
+            "yogurt",
+            "oatmeal"
+        ],
+        "substitutes": [
+            "flavored water",
+            "tea"
+        ],
+        "flavor_profile": "Sweet, tart, fruity",
+        "cooking_tips": "Freeze into popsicles or blend into smoothies."
+    },
+    {
+        "name": "milk",
+        "summary": "Dairy or plant-based beverage used in drinks, cereal, or cooking.",
+        "pairs_well_with": [
+            "cookies",
+            "cereal",
+            "mac & cheese"
+        ],
+        "substitutes": [
+            "almond milk",
+            "soy milk"
+        ],
+        "flavor_profile": "Creamy, mild",
+        "cooking_tips": "Use to make oatmeal or creamy sauces."
+    },
+    {
+        "name": "flavored water",
+        "summary": "Lightly sweetened or naturally flavored water. Great hydration alternative to soda.",
+        "pairs_well_with": [
+            "granola bars",
+            "snacks",
+            "exercise"
+        ],
+        "substitutes": [
+            "juice",
+            "sports drinks"
+        ],
+        "flavor_profile": "Lightly sweet, fruity, refreshing",
+        "cooking_tips": "Chill before serving for maximum refreshment."
+    },
+    {
+        "name": "frozen pizza",
+        "summary": "Pre-made pizza stored in the freezer, heated in microwave or oven.",
+        "pairs_well_with": [
+            "soft drinks",
+            "chips",
+            "hot sauce"
+        ],
+        "substitutes": [
+            "frozen meals",
+            "bagels with toppings"
+        ],
+        "flavor_profile": "Savory, cheesy, greasy",
+        "cooking_tips": "Add extra toppings before cooking to level it up."
+    },
+    {
+        "name": "frozen meals",
+        "summary": "Ready-to-eat meals stored in the freezer. Microwave-friendly.",
+        "pairs_well_with": [
+            "hot sauce",
+            "veggies",
+            "soda"
+        ],
+        "substitutes": [
+            "instant noodles",
+            "mac & cheese"
+        ],
+        "flavor_profile": "Varies by meal, often savory",
+        "cooking_tips": "Sprinkle herbs or shredded cheese after cooking."
+    },
+    {
+        "name": "canned soup",
+        "summary": "Shelf-stable soups and stews. Heated in microwave or stovetop.",
+        "pairs_well_with": [
+            "crackers",
+            "bread",
+            "cheese"
+        ],
+        "substitutes": [
+            "frozen meals",
+            "instant noodles"
+        ],
+        "flavor_profile": "Savory, hearty",
+        "cooking_tips": "Add cooked rice or pasta to stretch into a full meal."
+    },
+    {
+        "name": "canned tuna",
+        "summary": "Cooked tuna preserved in water or oil. Protein-rich and shelf-stable.",
+        "pairs_well_with": [
+            "crackers",
+            "mayo",
+            "pasta"
+        ],
+        "substitutes": [
+            "canned chicken",
+            "deli meat"
+        ],
+        "flavor_profile": "Savory, slightly fishy",
+        "cooking_tips": "Use in tuna salad, melt, or stir into instant noodles."
+    },
+    {
+        "name": "peanut butter",
+        "summary": "Ground peanut spread rich in protein and fats. Works in sweet or savory.",
+        "pairs_well_with": [
+            "jelly",
+            "bananas",
+            "crackers"
+        ],
+        "substitutes": [
+            "almond butter",
+            "sunflower butter"
+        ],
+        "flavor_profile": "Nutty, creamy, sweet-salty",
+        "cooking_tips": "Microwave with noodles for a quick satay sauce."
+    },
+    {
+        "name": "jelly",
+        "summary": "Sweet fruit preserve used in sandwiches or desserts.",
+        "pairs_well_with": [
+            "peanut butter",
+            "bread",
+            "crackers"
+        ],
+        "substitutes": [
+            "jam",
+            "fruit preserves"
+        ],
+        "flavor_profile": "Sweet, fruity",
+        "cooking_tips": "Spread on toast or stir into oatmeal for a fruity twist."
+    },
+    {
+        "name": "bread",
+        "summary": "Staple carb used for sandwiches, toast, or quick pizzas.",
+        "pairs_well_with": [
+            "peanut butter",
+            "deli meat",
+            "eggs"
+        ],
+        "substitutes": [
+            "tortillas",
+            "bagels"
+        ],
+        "flavor_profile": "Mild, wheaty",
+        "cooking_tips": "Toast for texture or make grilled cheese sandwiches."
+    },
+    {
+        "name": "bagels",
+        "summary": "Dense round bread with a chewy texture, ideal for breakfast or sandwiches.",
+        "pairs_well_with": [
+            "cream cheese",
+            "peanut butter",
+            "eggs"
+        ],
+        "substitutes": [
+            "bread",
+            "English muffins"
+        ],
+        "flavor_profile": "Chewy, slightly sweet or savory",
+        "cooking_tips": "Toast and top with savory or sweet spreads."
+    },
+    {
+        "name": "tortillas",
+        "summary": "Flatbreads used for wraps, quesadillas, and more.",
+        "pairs_well_with": [
+            "cheese",
+            "deli meat",
+            "eggs"
+        ],
+        "substitutes": [
+            "bread",
+            "pita"
+        ],
+        "flavor_profile": "Soft, flexible, mild",
+        "cooking_tips": "Heat briefly on a pan for better flexibility and flavor."
+    },
+    {
+        "name": "rice",
+        "summary": "Simple grain base used in meals across many cuisines.",
+        "pairs_well_with": [
+            "soy sauce",
+            "eggs",
+            "frozen veggies"
+        ],
+        "substitutes": [
+            "quinoa",
+            "instant mashed potatoes"
+        ],
+        "flavor_profile": "Neutral, fluffy or sticky",
+        "cooking_tips": "Microwaveable pouches make prep super fast."
+    },
+    {
+        "name": "cereal",
+        "summary": "Breakfast grain, usually sweetened and eaten with milk.",
+        "pairs_well_with": [
+            "milk",
+            "fruit",
+            "yogurt"
+        ],
+        "substitutes": [
+            "granola",
+            "oatmeal"
+        ],
+        "flavor_profile": "Sweet, crunchy",
+        "cooking_tips": "Crush to use as topping for desserts or yogurt."
+    },
+    {
+        "name": "oatmeal",
+        "summary": "Cooked oats, good for breakfast and heart health. Instant packets are microwaveable.",
+        "pairs_well_with": [
+            "fruit",
+            "milk",
+            "peanut butter"
+        ],
+        "substitutes": [
+            "cereal",
+            "cream of wheat"
+        ],
+        "flavor_profile": "Mild, nutty",
+        "cooking_tips": "Add sliced banana, honey, or trail mix for flavor."
+    },
+    {
+        "name": "mozzarella sticks",
+        "summary": "Breaded cheese sticks, often microwaved or oven-baked.",
+        "pairs_well_with": [
+            "marinara",
+            "soda",
+            "pizza"
+        ],
+        "substitutes": [
+            "string cheese",
+            "frozen pizza"
+        ],
+        "flavor_profile": "Cheesy, salty, crunchy",
+        "cooking_tips": "Best when cooked until golden and gooey."
+    },
+    {
+        "name": "chicken nuggets",
+        "summary": "Breaded chicken pieces, typically frozen and microwave-ready.",
+        "pairs_well_with": [
+            "mac & cheese",
+            "ketchup",
+            "chips"
+        ],
+        "substitutes": [
+            "deli meat",
+            "jerky"
+        ],
+        "flavor_profile": "Savory, crispy",
+        "cooking_tips": "Toast or bake for best texture; pair with dipping sauce."
+    },
+    {
+        "name": "string cheese",
+        "summary": "Individually packaged cheese sticks that can be pulled apart into strings.",
+        "pairs_well_with": [
+            "crackers",
+            "fruit",
+            "trail mix"
+        ],
+        "substitutes": [
+            "cheese slices",
+            "mozzarella sticks"
+        ],
+        "flavor_profile": "Mild, creamy, salty",
+        "cooking_tips": "Eat as-is or melt onto a mini tortilla pizza."
+    },
+    {
+        "name": "salsa",
+        "summary": "Tomato-based condiment with varying spice levels, used as a dip or topping.",
+        "pairs_well_with": [
+            "chips",
+            "cheese",
+            "eggs"
+        ],
+        "substitutes": [
+            "hot sauce",
+            "pico de gallo"
+        ],
+        "flavor_profile": "Spicy, tangy, fresh",
+        "cooking_tips": "Mix into mac & cheese or use in wraps for flavor."
+    },
+    {
+        "name": "apples",
+        "summary": "Crunchy, sweet fruit that stores well and is easy to eat.",
+        "pairs_well_with": [
+            "peanut butter",
+            "cheese",
+            "nuts"
+        ],
+        "substitutes": [
+            "bananas",
+            "pears"
+        ],
+        "flavor_profile": "Sweet, tart, crisp",
+        "cooking_tips": "Slice and dip in peanut butter for a balanced snack."
+    },
+    {
+        "name": "bananas",
+        "summary": "Soft, sweet fruit that\u2019s portable and full of potassium.",
+        "pairs_well_with": [
+            "peanut butter",
+            "oatmeal",
+            "cereal"
+        ],
+        "substitutes": [
+            "apples",
+            "plantains"
+        ],
+        "flavor_profile": "Sweet, smooth",
+        "cooking_tips": "Mash into oatmeal or toast for extra sweetness."
+    },
+    {
+        "name": "greek yogurt",
+        "summary": "Thick, protein-rich yogurt with a tangy flavor.",
+        "pairs_well_with": [
+            "granola",
+            "fruit",
+            "honey"
+        ],
+        "substitutes": [
+            "regular yogurt",
+            "cottage cheese"
+        ],
+        "flavor_profile": "Tangy, creamy",
+        "cooking_tips": "Use in dips or as a mayo substitute."
+    },
+    {
+        "name": "baby carrots",
+        "summary": "Small, peeled carrots ideal for snacking.",
+        "pairs_well_with": [
+            "hummus",
+            "ranch",
+            "peanut butter"
+        ],
+        "substitutes": [
+            "celery sticks",
+            "cucumber"
+        ],
+        "flavor_profile": "Sweet, crisp",
+        "cooking_tips": "Eat raw or steam for a quick veggie side."
+    },
+    {
+        "name": "celery sticks",
+        "summary": "Crisp, hydrating vegetable sticks often used for snacking or dips.",
+        "pairs_well_with": [
+            "peanut butter",
+            "hummus",
+            "ranch"
+        ],
+        "substitutes": [
+            "carrots",
+            "cucumber"
+        ],
+        "flavor_profile": "Mild, watery, slightly bitter",
+        "cooking_tips": "Great raw, or chopped into soups and stir-fries."
+    },
+    {
+        "name": "hummus",
+        "summary": "Creamy dip made from chickpeas, tahini, and garlic. High in protein and fiber.",
+        "pairs_well_with": [
+            "carrots",
+            "celery",
+            "pretzels",
+            "crackers"
+        ],
+        "substitutes": [
+            "bean dip",
+            "guacamole"
+        ],
+        "flavor_profile": "Savory, nutty, garlicky",
+        "cooking_tips": "Use as a spread in wraps or sandwiches."
+    },
+    {
+        "name": "hard-boiled eggs",
+        "summary": "Eggs boiled in their shell, peeled, and eaten cold or warm.",
+        "pairs_well_with": [
+            "salt",
+            "pepper",
+            "hot sauce",
+            "toast"
+        ],
+        "substitutes": [
+            "scrambled eggs",
+            "cheese"
+        ],
+        "flavor_profile": "Mild, creamy, rich",
+        "cooking_tips": "Peel and slice onto toast, salad, or ramen."
+    },
+    {
+        "name": "salt",
+        "summary": "Essential seasoning used to enhance flavor in nearly all dishes.",
+        "pairs_well_with": [
+            "pepper",
+            "garlic",
+            "most savory foods"
+        ],
+        "substitutes": [
+            "soy sauce",
+            "herb seasoning"
+        ],
+        "flavor_profile": "Salty",
+        "cooking_tips": "Use sparingly; enhances both sweet and savory dishes."
+    },
+    {
+        "name": "pepper",
+        "summary": "Ground black pepper adds heat and complexity to dishes.",
+        "pairs_well_with": [
+            "salt",
+            "eggs",
+            "meats",
+            "vegetables"
+        ],
+        "substitutes": [
+            "chili flakes",
+            "paprika"
+        ],
+        "flavor_profile": "Spicy, sharp, earthy",
+        "cooking_tips": "Add at the end of cooking to preserve flavor."
+    },
+    {
+        "name": "hot sauce",
+        "summary": "Spicy condiment used to add heat and tang to food.",
+        "pairs_well_with": [
+            "eggs",
+            "noodles",
+            "mac & cheese",
+            "meats"
+        ],
+        "substitutes": [
+            "sriracha",
+            "chili oil"
+        ],
+        "flavor_profile": "Spicy, tangy",
+        "cooking_tips": "A few drops go a long way; try mixing into condiments."
+    },
+    {
+        "name": "sugar",
+        "summary": "Sweetener used in baking, drinks, and sauces.",
+        "pairs_well_with": [
+            "coffee",
+            "oatmeal",
+            "fruit"
+        ],
+        "substitutes": [
+            "honey",
+            "stevia"
+        ],
+        "flavor_profile": "Sweet",
+        "cooking_tips": "Mix into sauces for balance; sprinkle over cereal or fruit."
+    },
+    {
+        "name": "coffee creamer",
+        "summary": "Flavored liquid or powder added to coffee for creaminess and sweetness.",
+        "pairs_well_with": [
+            "coffee",
+            "tea"
+        ],
+        "substitutes": [
+            "milk",
+            "half and half"
+        ],
+        "flavor_profile": "Sweet, creamy, flavored",
+        "cooking_tips": "Add to oatmeal or desserts for extra flavor."
+    },
+    {
+        "name": "ketchup",
+        "summary": "Sweet and tangy tomato-based condiment.",
+        "pairs_well_with": [
+            "fries",
+            "nuggets",
+            "burgers"
+        ],
+        "substitutes": [
+            "BBQ sauce",
+            "tomato sauce"
+        ],
+        "flavor_profile": "Sweet, tangy, tomato-rich",
+        "cooking_tips": "Mix with mayo or hot sauce for a custom dip."
+    },
+    {
+        "name": "mustard",
+        "summary": "Zesty, tangy condiment made from mustard seeds.",
+        "pairs_well_with": [
+            "hot dogs",
+            "pretzels",
+            "deli sandwiches"
+        ],
+        "substitutes": [
+            "dijon",
+            "aioli"
+        ],
+        "flavor_profile": "Tangy, sharp",
+        "cooking_tips": "Add to salad dressings or sandwich spreads."
+    },
+    {
+        "name": "mayonnaise",
+        "summary": "Creamy condiment made from eggs and oil, often used as a sandwich spread.",
+        "pairs_well_with": [
+            "tuna",
+            "sandwiches",
+            "burgers"
+        ],
+        "substitutes": [
+            "greek yogurt",
+            "hummus"
+        ],
+        "flavor_profile": "Creamy, tangy",
+        "cooking_tips": "Use as a base for dips or mix with sriracha for a spicy spread."
+    },
+    {
+        "name": "soy sauce",
+        "summary": "Salty, umami-rich sauce made from fermented soybeans.",
+        "pairs_well_with": [
+            "rice",
+            "noodles",
+            "eggs",
+            "vegetables"
+        ],
+        "substitutes": [
+            "tamari",
+            "fish sauce"
+        ],
+        "flavor_profile": "Salty, umami, savory",
+        "cooking_tips": "Use in stir-fries, marinades, or drizzled on rice."
+    },
+    {
+        "name": "sriracha",
+        "summary": "Spicy chili garlic sauce with a hint of sweetness.",
+        "pairs_well_with": [
+            "eggs",
+            "ramen",
+            "sandwiches"
+        ],
+        "substitutes": [
+            "hot sauce",
+            "chili oil"
+        ],
+        "flavor_profile": "Spicy, garlicky, slightly sweet",
+        "cooking_tips": "Great in sauces, mayo, or straight onto food."
+    }
+]
