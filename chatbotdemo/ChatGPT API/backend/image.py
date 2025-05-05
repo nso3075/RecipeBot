@@ -1,16 +1,21 @@
-from openai import OpenAI
 import os
-from dotenv import load_dotenv
+from openai import OpenAI
 
-load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-def generate_image(image_prompt: str) -> str:
-    response = openai_client.images.create(
-        model = "dall-e-3",
-        prompt=image_prompt,
-        n=1,
-        size="512x512"
-    )
-    return response.data[0].url
+def generate_image(prompt):
+    print("[IMAGE] Generating image for prompt:", prompt)
+    try:
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+        image_url = response.data[0].url
+        print("[IMAGE] URL:", image_url)
+        return image_url
+    except Exception as e:
+        print("[IMAGE ERROR]", e)
+        return ""

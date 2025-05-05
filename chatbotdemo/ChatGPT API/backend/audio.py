@@ -1,23 +1,25 @@
-from elevenlabs.client import ElevenLabs
 import os
 import base64
+from elevenlabs.client import ElevenLabs
 
-from dotenv import load_dotenv
+client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
+voice_id = os.getenv("VOICE_ID")
 
-load_dotenv()
+def generate_audio(script):
+    print("[AUDIO] Generating audio for script...")
+    try:
+        if not voice_id:
+            raise ValueError("VOICE_ID is not set in the environment.")
 
-voice_client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
-VOICE_ID = os.getenv("VOICE_ID")
-
-def generate_audio(script: str) -> str:
-    audio = voice_client.text_to_speech(
-        voice_id = VOICE_ID,
-        output_format = "mp3",
-        text = script,
-        model_id = "eleven_multilingual_v2",
-    )
-    
-    # Convert audio to base64
-    audio_base64 = base64.b64encode(b"".join(audio)).decode('utf-8')
-    
-    return audio_base64
+        audio = client.text_to_speech.convert(
+            voice_id=voice_id,
+            output_format="mp3_44100_128",
+            text=script,
+            model_id="eleven_multilingual_v2",
+        )
+        audio_base64 = base64.b64encode(b"".join(audio)).decode("utf-8")
+        print("[AUDIO] Audio generated successfully.")
+        return audio_base64
+    except Exception as e:
+        print("[AUDIO ERROR]", e)
+        return ""
