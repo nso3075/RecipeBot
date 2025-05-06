@@ -22,7 +22,7 @@ def generate_chat_response(user_input, ingredient_list):
         model="gpt-4.1",
         messages=[{"role": "user", "content": prompt}]
     )
-    return response.choices[0].message.content
+    return f"<p>{response.choices[0].message.content.strip()}</p>"
 
 def generate_image_prompt(recipe_text):
     prompt = f"Describe a DALL-E 3 image prompt of the following meal:\n{recipe_text}"

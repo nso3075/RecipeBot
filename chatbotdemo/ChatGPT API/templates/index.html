@@ -5,66 +5,79 @@
   <title>Campus Food Chatbot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS for layout and styling -->
+  <!-- Bootstrap CSS for styling -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <!-- Font Awesome for optional icons -->
+  <!-- FontAwesome for icons (optional) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <!-- Highlight.js for optional code formatting support -->
+  <!-- Highlight.js for optional code highlighting in chat -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
-  <!-- Your custom stylesheet -->
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body style="background-color: #1e1e2f; color: white;">
 
-  <div class="container mt-5">
+  <!-- Main Chatbot Container -->
+  <div class="container mt-5" style="max-width: 900px;">
     <h1 class="text-white mb-4">Campus Food Chatbot</h1>
 
-    <!-- Chat display box -->
-    <div class="chat-box p-3 mb-3" style="background:#2a2a3d; border-radius:10px; max-height:500px; overflow-y:auto;">
-      <!-- Messages will be dynamically inserted here -->
+    <!-- Chat Box -->
+    <div class="chat-box p-4 mb-4" style="background:#2a2a3d; border-radius:10px; max-height:750px; min-height:500px; overflow-y:auto; position:relative;">
+      <!-- Messages dynamically added here -->
+      
+      <!-- Loading spinner (hidden by default) -->
+      <div id="loading" style="display:none; text-align:center; margin-top:20px;">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div style="margin-top:10px;">👨‍🍳 Cooking up something delicious...</div>
+      </div>
     </div>
 
-    <!-- Input area for user message -->
+    <!-- User Message Input -->
     <div class="form-group">
       <textarea class="form-control" id="message-input" rows="3" placeholder="Type your ingredients or question here..."></textarea>
     </div>
+
+    <!-- Send Button -->
     <button class="btn btn-primary" id="send-btn">Send</button>
   </div>
 
-  <!-- Chatbot frontend logic -->
+  <!-- --- Frontend JavaScript Logic --- -->
   <script>
     const chatBox = document.querySelector(".chat-box");
     const messageInput = document.querySelector("#message-input");
     const sendBtn = document.querySelector("#send-btn");
 
-    // Adds a message (user or bot) to the chat box
+    // Function to add a message (user or bot) to the chat window
     function addMessage(message, isUser) {
       const div = document.createElement("div");
       div.classList.add("mt-3", "p-3", "rounded", isUser ? "user-message" : "bot-message");
 
       const icon = isUser
-        ? "{{ url_for('static', filename='images/user.png') }}"
-        : "{{ url_for('static', filename='images/gpt.jpg') }}";
+        ? "{{ url_for('static', filename='images/henry.jpg') }}"   // User icon
+        : "{{ url_for('static', filename='images/gpt.jpg') }}";    // Bot icon
 
       div.innerHTML = `
         <img src="${icon}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
-        <p>${message}</p>
+        <div>${message}</div>
       `;
       chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+      chatBox.scrollTop = chatBox.scrollHeight;  // Always scroll to newest message
     }
 
-    // Sends the user message to the Flask API and handles the response
+    // Function to send the user's input to the backend
     function sendMessage() {
       const message = messageInput.value.trim();
       if (!message) return;
 
-      addMessage(message, true); // Show user message
-      messageInput.value = "";   // Clear input box
+      addMessage(message, true);  // Show user's own message
+      messageInput.value = "";    // Clear the input field
+      document.getElementById("loading").style.display = "block";  // Show loading animation
 
       // Send POST request to Flask API
       fetch("/api", {
@@ -74,43 +87,54 @@
       })
       .then(res => res.json())
       .then(data => {
+        document.getElementById("loading").style.display = "none";  // Hide loading spinner
+
         const div = document.createElement("div");
         div.classList.add("mt-3", "p-3", "rounded", "bot-message");
 
-        // Insert bot reply, image, and audio
+        // Build bot reply with optional image and audio
         div.innerHTML = `
           <img src="{{ url_for('static', filename='images/gpt.jpg') }}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
-          <p>${data.text}</p>
-          <img src="${data.image_url}" alt="Recipe Image" style="max-width:100%; border-radius:12px; margin-top:10px;" />
-          <audio controls style="margin-top:10px;">
-            <source src="data:audio/mp3;base64,${data.audio_base64}" type="audio/mp3">
-          </audio>
+          <div>${data.text}</div>
+          ${data.image_url ? `<img src="${data.image_url}" alt="Recipe Image" style="width:300px;height:auto;display:block;margin:15px auto;border-radius:12px;">` : ""}
+          ${data.audio_base64 ? `<audio controls style="margin-top:10px;"><source src="data:audio/mp3;base64,${data.audio_base64}" type="audio/mp3"></audio>` : ""}
         `;
-
         chatBox.appendChild(div);
         chatBox.scrollTop = chatBox.scrollHeight;
+        messageInput.focus();  // Focus back to input for fast chatting
       })
       .catch(error => {
         console.error("Error:", error);
+        document.getElementById("loading").style.display = "none";
         alert("There was an error processing your request.");
       });
     }
 
-    // Event listeners for button click and Enter key
+    // Function to show the initial welcome message when page loads
+    function initialBotMessage() {
+      const welcomeMessage = "Hi! I'm your campus food guide. Please send me the ingredients you have, and I'll create a meal idea for you!";
+      addMessage(welcomeMessage, false);
+    }
+
+    // Event Listeners
     sendBtn.addEventListener("click", sendMessage);
     messageInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
+        e.preventDefault();  // Prevent newline on Enter
         sendMessage();
       }
     });
 
-    // Optional: auto-highlight code blocks in responses
+    // Optional: Highlight code snippets every second if they appear
     setInterval(() => {
       document.querySelectorAll("pre code").forEach(block => {
         hljs.highlightElement(block);
       });
     }, 1000);
+
+    // Auto-run initial welcome message on page load
+    window.onload = initialBotMessage;
   </script>
+
 </body>
 </html>
