@@ -17,7 +17,7 @@ def generate_meal_idea(ingredients, context):
 
 def generate_chat_response(user_input, ingredient_list):
     base = f"The user has these ingredients: {', '.join(ingredient_list)}.\n"
-    prompt = base + "Answer their question: " + user_input
+    prompt = base + "Answer their question: " + user_input + "\nFormat response with <h2>, <ul>, <li>, <p> HTML tags."
     response = client.chat.completions.create(
         model="gpt-4.1",
         messages=[{"role": "user", "content": prompt}]
