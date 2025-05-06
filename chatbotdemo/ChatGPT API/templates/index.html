@@ -17,6 +17,12 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Image path variables to use in JS -->
+  <script>
+    const userIcon = "{{ url_for('static', filename='images/henry.jpg') }}";
+    const botIcon = "{{ url_for('static', filename='images/gpt.jpg') }}";
+  </script>
 </head>
 
 <body style="background-color: #1e1e2f; color: white;">
@@ -26,11 +32,11 @@
     <h1 class="text-white mb-4">Campus Food Chatbot</h1>
 
     <!-- Chat Box -->
-    <div class="chat-box p-4 mb-4" style="background:#2a2a3d; border-radius:10px; max-height:750px; min-height:500px; overflow-y:auto; position:relative;">
+    <div class="chat-box p-4 mb-4" style="background:#2a2a3d; border-radius:10px; max-height:750px; min-height:500px; overflow-y:auto; position:relative;" role="log" aria-live="polite">
       <!-- Messages dynamically added here -->
-      
-      <!-- Loading spinner (hidden by default) -->
-      <div id="loading" style="display:none; text-align:center; margin-top:20px;">
+
+      <!-- Loading spinner at bottom -->
+      <div id="loading" style="display:none; text-align:center; margin-top:20px; padding-top:10px; border-top:1px solid #444;">
         <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -44,7 +50,7 @@
     </div>
 
     <!-- Send Button -->
-    <button class="btn btn-primary" id="send-btn">Send</button>
+    <button class="btn btn-primary" id="send-btn" aria-label="Send message">Send</button>
   </div>
 
   <!-- --- Frontend JavaScript Logic --- -->
@@ -58,16 +64,14 @@
       const div = document.createElement("div");
       div.classList.add("mt-3", "p-3", "rounded", isUser ? "user-message" : "bot-message");
 
-      const icon = isUser
-        ? "{{ url_for('static', filename='images/henry.jpg') }}"   // User icon
-        : "{{ url_for('static', filename='images/gpt.jpg') }}";    // Bot icon
+      const icon = isUser ? userIcon : botIcon;
 
       div.innerHTML = `
         <img src="${icon}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
         <div>${message}</div>
       `;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;  // Always scroll to newest message
+      chatBox.insertBefore(div, document.getElementById("loading"));  // Insert above loading spinner
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     // Function to send the user's input to the backend
@@ -76,10 +80,10 @@
       if (!message) return;
 
       addMessage(message, true);  // Show user's own message
-      messageInput.value = "";    // Clear the input field
-      document.getElementById("loading").style.display = "block";  // Show loading animation
+      messageInput.value = "";
+      document.getElementById("loading").style.display = "block";
+      sendBtn.disabled = true;
 
-      // Send POST request to Flask API
       fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -87,30 +91,31 @@
       })
       .then(res => res.json())
       .then(data => {
-        document.getElementById("loading").style.display = "none";  // Hide loading spinner
+        document.getElementById("loading").style.display = "none";
+        sendBtn.disabled = false;
 
         const div = document.createElement("div");
         div.classList.add("mt-3", "p-3", "rounded", "bot-message");
 
-        // Build bot reply with optional image and audio
         div.innerHTML = `
-          <img src="{{ url_for('static', filename='images/gpt.jpg') }}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
+          <img src="${botIcon}" style="width:32px;height:32px;border-radius:50%;margin-right:8px;">
           <div>${data.text}</div>
           ${data.image_url ? `<img src="${data.image_url}" alt="Recipe Image" style="width:300px;height:auto;display:block;margin:15px auto;border-radius:12px;">` : ""}
           ${data.audio_base64 ? `<audio controls style="margin-top:10px;"><source src="data:audio/mp3;base64,${data.audio_base64}" type="audio/mp3"></audio>` : ""}
         `;
-        chatBox.appendChild(div);
+        chatBox.insertBefore(div, document.getElementById("loading"));
         chatBox.scrollTop = chatBox.scrollHeight;
-        messageInput.focus();  // Focus back to input for fast chatting
+        messageInput.focus();
       })
       .catch(error => {
         console.error("Error:", error);
         document.getElementById("loading").style.display = "none";
+        sendBtn.disabled = false;
         alert("There was an error processing your request.");
       });
     }
 
-    // Function to show the initial welcome message when page loads
+    // Show welcome message
     function initialBotMessage() {
       const welcomeMessage = "Hi! I'm your campus food guide. Please send me the ingredients you have, and I'll create a meal idea for you!";
       addMessage(welcomeMessage, false);
@@ -120,19 +125,23 @@
     sendBtn.addEventListener("click", sendMessage);
     messageInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();  // Prevent newline on Enter
+        e.preventDefault();
         sendMessage();
       }
     });
 
-    // Optional: Highlight code snippets every second if they appear
-    setInterval(() => {
+    // Optional: Highlight code snippets only when present
+    function highlightCode() {
       document.querySelectorAll("pre code").forEach(block => {
         hljs.highlightElement(block);
       });
-    }, 1000);
+    }
 
-    // Auto-run initial welcome message on page load
+    // Re-highlight code snippets on new message
+    const observer = new MutationObserver(highlightCode);
+    observer.observe(document.querySelector(".chat-box"), { childList: true });
+
+    // Initial greeting on load
     window.onload = initialBotMessage;
   </script>
 
